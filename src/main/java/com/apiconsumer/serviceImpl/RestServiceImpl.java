@@ -3,6 +3,7 @@ package com.apiconsumer.serviceImpl;
 import java.util.Arrays;
 import java.util.List;
 
+import org.springframework.http.HttpEntity;
 import org.springframework.stereotype.Service;
 import org.springframework.web.client.RestTemplate;
 
@@ -34,9 +35,16 @@ public class RestServiceImpl implements RestService {
 		String pathParameters=code+"/"+name+"/"+location+"/"+emailId+"/"+dateOfBirth;
 		restTemplate.put(CONTEXT_URL+"editEmployee/"+pathParameters,null);
 		
-		System.out.println("Successfull Commit");
 		
-		//restTemplate.postForObject(CONTEXT_URL+"editEmployee/"+pathParameters,null,null);
+	}
+
+	@Override
+	public void addEmployee(Employee employee) {
+		RestTemplate restTemplate = new RestTemplate();
+		HttpEntity<Employee> request = new HttpEntity<>(employee);
+		System.out.println("Inside RestService Before");
+		restTemplate.postForObject(CONTEXT_URL+"addEmployee", request, Employee.class);
+		System.out.println("Inside RestService After");
 	}
 
 }

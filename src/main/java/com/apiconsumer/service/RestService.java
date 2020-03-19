@@ -13,5 +13,5 @@ public interface RestService  {
 	public List<Employee> getAllEmployees();
 	public Employee getByEmployeeCode(int code);
 	void editEmployee(int code, String name, String location, String emailId, String dobInString);
-
+	public void addEmployee(Employee employee);
 }

@@ -15,7 +15,7 @@ import lombok.Setter;
 public class Employee {
 	@Getter
 	@Setter
-	@NotEmpty(message = "Emp Code can not be null")
+	@NotNull(message = "Emp Code can not be null")
 	int code;
 	@NotEmpty(message = "Name can not be null")
 	@Size(max = 100, message = "Name can not be 100 characters long")
@@ -32,7 +32,6 @@ public class Employee {
 	@Getter
 	@Setter
 	String emailId;
-	@NotNull
 	@Getter
 	@Setter
 	Date dateOfBirth;
@@ -40,12 +39,15 @@ public class Employee {
 	String dobInString;
 
 	public String getDobInString() throws ParseException {
+		if(this.dateOfBirth != null)
 		return DateConverter.convertDate(this.dateOfBirth.toString());
+		else
+			return dobInString;
 
 	}
 
-	public void setDobInString(Date dateOfBirth) {
-		this.dateOfBirth = dateOfBirth;
+	public void setDobInString(String dobInString) {
+		this.dobInString = dobInString;
 	}
 
 }

@@ -27,11 +27,22 @@
 
 </head>
 <body>
+	
+
+	<div style="float:right;margin-right:250px">
 	<jsp:include page="header.jsp" />
-
-
+	<br>
+	<br>
+	<br>
+	<br>
+	<form action="/employeeManagement/addEmployee" method="GET">
+	<input type="submit" name="Upload Employee Details" value="Upload Employee Details">
+	</form>
+	</div>
 	<div class="container">
-
+		
+		<br>
+		<br>
 		<h2>Employees Details</h2>
 
 		<table class="table table-hover">
@@ -52,7 +63,7 @@
 						<td>${employees.name }</td>
 						<td>${employees.location }</td>
 						<td>${employees.emailId }</td>
-						<td>${employees.dateOfBirth }</td>
+						<td>${employees.dobInString }</td>
 						<td>
 							<form action="/employeeManagement/editEmployee" method="GET">
 								<input type="hidden" name="code" value="${employees.code }" />
