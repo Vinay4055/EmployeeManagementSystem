@@ -7,6 +7,9 @@ import java.util.Calendar;
 import java.util.Date;
 
 public class DateConverter {
+	private DateConverter() {
+		throw new IllegalStateException("Can Not Create Object Of Utility Class");
+	}
 public static String convertDate(String dateStr) throws ParseException {
 	DateFormat formatter = new SimpleDateFormat("E MMM dd HH:mm:ss Z yyyy");
 	Date date = (Date)formatter.parse(dateStr);     

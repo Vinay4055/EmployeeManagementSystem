@@ -18,7 +18,7 @@ public class UserDetailsServiceImpl implements UserDetailsService {
 
 	@Override
 	public UserDetails loadUserByUsername(String userName) {
-		System.out.println("Load user by username function userName = "+userName);
+		
 		UserBuilder builder;
 		com.apiconsumer.entity.User user = userService.findByUserId(userName);
 		if (user != null) {

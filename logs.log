@@ -458,4 +458,9 @@ Field error in object 'employee' on field 'code': rejected value []; codes [type
 ""2020-03-19 09:52:45 - Initializing Spring DispatcherServlet 'dispatcherServlet'
 ""2020-03-19 09:52:45 - Initializing Servlet 'dispatcherServlet'
 ""2020-03-19 09:52:45 - Completed initialization in 5 ms
+""2020-03-19 10:24:59 - Application shutdown requested.
+""2020-03-19 10:24:59 - Shutting down ExecutorService 'applicationTaskExecutor'
+""2020-03-19 10:24:59 - Closing JPA EntityManagerFactory for persistence unit 'default'
+""2020-03-19 10:24:59 - HikariPool-1 - Shutdown initiated...
+""2020-03-19 10:24:59 - HikariPool-1 - Shutdown completed.
 "

@@ -42,9 +42,9 @@ public class RestServiceImpl implements RestService {
 	public void addEmployee(Employee employee) {
 		RestTemplate restTemplate = new RestTemplate();
 		HttpEntity<Employee> request = new HttpEntity<>(employee);
-		System.out.println("Inside RestService Before");
+		
 		restTemplate.postForObject(CONTEXT_URL+"addEmployee", request, Employee.class);
-		System.out.println("Inside RestService After");
+		
 	}
 
 }

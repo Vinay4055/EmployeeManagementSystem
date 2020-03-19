@@ -40,7 +40,7 @@ public class Employee {
 
 	public String getDobInString() throws ParseException {
 		if(this.dateOfBirth != null)
-		return DateConverter.convertDate(this.dateOfBirth.toString());
+			return DateConverter.convertDate(this.dateOfBirth.toString());
 		else
 			return dobInString;
 
