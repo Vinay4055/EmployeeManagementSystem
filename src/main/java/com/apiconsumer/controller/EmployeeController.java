@@ -43,17 +43,16 @@ public class EmployeeController {
 	}
 
 	@GetMapping(value = "/editEmployee")
-	public String editEmployee(@RequestParam("code") int employeeCode, Model map) throws ParseException {
+	public String editEmployee(@RequestParam("code") int employeeCode, Model map) {
 		Employee employee = restService.getByEmployeeCode(employeeCode);
 		map.addAttribute("employee", employee);
+		map.addAttribute("updatedEmployee",this.employee );
 		return "editEmployee";
 	}
 
 	@PostMapping(value = "/editEmployee")
-	public String editEmployee(@RequestParam int code, @RequestParam String name, @RequestParam String location,
-			@RequestParam String emailId, @RequestParam String dobInString) {
-
-		restService.editEmployee(code, name, location, emailId, dobInString);
+	public String editEmployee(@ModelAttribute("updatedEmployee")Employee employee) {
+		restService.addEmployee(employee);
 		return "forward:/employeeManagement/";
 	}
 
@@ -76,6 +75,7 @@ public class EmployeeController {
 	}
 	@PostMapping("/addEmployee")
 	public String addEmployee(@ModelAttribute("employee")Employee employee) {
+		System.out.println("From Add = "+employee);
 		restService.addEmployee(employee);
 		
 		return "forward:/employeeManagement/";

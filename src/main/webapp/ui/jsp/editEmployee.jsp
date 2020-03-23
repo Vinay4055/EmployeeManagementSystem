@@ -1,5 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=ISO-8859-1"
 	pageEncoding="ISO-8859-1"%>
+<%@ taglib prefix="form" uri="http://www.springframework.org/tags/form"%>
 <!DOCTYPE html>
 <html>
 <head>
@@ -11,52 +12,51 @@
 	src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
 <script
 	src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
-	
 
-	
-	
-	
-	
+
+
+
+
+
 </head>
 <body>
 	<div class="container">
-		Date=${employee.dobInString }
 		<h2>Edit Employee Details</h2>
-		<form class="form-horizontal" method="POST"
-			action="/employeeManagement/editEmployee">
+		<form:form class="form-horizontal" method="POST"
+			action="/employeeManagement/editEmployee" modelAttribute="updatedEmployee">
 			<div class="form-group">
 				<label class="control-label col-sm-2">Employee Code</label>
 				<div class="col-sm-10">
-					<input type="text" class="form-control" name="code"
-						value="${employee.code }" readonly="readonly"/>
+					<form:input type="text" class="form-control" 
+						value="${employee.code }" readonly="readonly" path="code" />
 				</div>
 			</div>
 			<div class="form-group">
 				<label class="control-label col-sm-2">Employee Name:</label>
 				<div class="col-sm-10">
-					<input type="text" class="form-control" name="name"
-						value="${employee.name }" />
+					<form:input type="text" class="form-control" 
+						value="${employee.name }" path="name"/>
 				</div>
 			</div>
 			<div class="form-group">
 				<label class="control-label col-sm-2">Location:</label>
 				<div class="col-sm-10">
-					<input type="text" class="form-control" name="location"
-						value="${employee.location }" />
+					<form:input type="text" class="form-control" 
+						value="${employee.location }" path="location"/>
 				</div>
 			</div>
 			<div class="form-group">
 				<label class="control-label col-sm-2">Email:</label>
 				<div class="col-sm-10">
-					<input type="text" class="form-control" name="emailId"
-						value="${employee.emailId }" />
+					<form:input type="text" class="form-control" 
+						value="${employee.emailId }" path="emailId"/>
 				</div>
 			</div>
 			<div class="form-group">
 				<label class="control-label col-sm-2">Date of Birth:</label>
 				<div class="col-sm-10">
-					<input type="date" id="dob" class="form-control" name="dobInString"
-						value=${employee.dobInString } />
+					<form:input type="date" id="dob" class="form-control" 
+						value="${employee.dobInString }" path="dobInString"/>
 				</div>
 			</div>
 			<div class="form-group">
@@ -64,7 +64,7 @@
 					<button type="submit" class="btn btn-default">Submit</button>
 				</div>
 			</div>
-		</form>
+		</form:form>
 	</div>
 </body>
 </html>
