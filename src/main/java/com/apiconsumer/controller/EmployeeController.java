@@ -1,9 +1,8 @@
 package com.apiconsumer.controller;
 
-import java.text.ParseException;
-
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.validation.Valid;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.core.Authentication;
@@ -11,6 +10,7 @@ import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.security.web.authentication.logout.SecurityContextLogoutHandler;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
+import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PostMapping;
@@ -36,22 +36,21 @@ public class EmployeeController {
 	public String listAllEmployees(Model model) {
 		model.addAttribute("employees", restService.getAllEmployees());
 		String id = LoggedUser.loggedInUser();
-		String name = userRepository.findById(id).get().getName();
+		String name = userRepository.findById(id).get().getName(); //Call it from service 
 		model.addAttribute("userName", name);
 		return "listAllEmployees";
 
 	}
 
 	@GetMapping(value = "/editEmployee")
-	public String editEmployee(@RequestParam("code") int employeeCode, Model map) {
-		Employee employee = restService.getByEmployeeCode(employeeCode);
+	public String editEmployee(@RequestParam("code") int employeeCode, Model map) { //Send code from model 
+		Employee employee = restService.getByEmployeeCode(employeeCode); 
 		map.addAttribute("employee", employee);
-		map.addAttribute("updatedEmployee",this.employee );
 		return "editEmployee";
 	}
 
 	@PostMapping(value = "/editEmployee")
-	public String editEmployee(@ModelAttribute("updatedEmployee")Employee employee) {
+	public String editEmployee(@ModelAttribute("employee")Employee employee) {
 		restService.addEmployee(employee);
 		return "forward:/employeeManagement/";
 	}
@@ -74,8 +73,8 @@ public class EmployeeController {
 		return "insertEmployee";
 	}
 	@PostMapping("/addEmployee")
-	public String addEmployee(@ModelAttribute("employee")Employee employee) {
-		System.out.println("From Add = "+employee);
+	public String addEmployee(@Valid@ModelAttribute("employee")Employee employee) {
+		
 		restService.addEmployee(employee);
 		
 		return "forward:/employeeManagement/";

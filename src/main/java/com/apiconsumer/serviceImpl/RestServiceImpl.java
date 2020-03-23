@@ -11,30 +11,30 @@ import com.apiconsumer.model.Employee;
 import com.apiconsumer.service.RestService;
 
 @Service
-public class RestServiceImpl implements RestService {
-	private static final String SERVICE_URL = "http://localhost:7070/employee/";
-
+public class RestServiceImpl implements RestService { //EmployeeServiceClient put it in client package
+	private static final String SERVICE_URL = "http://localhost:7070/employee/";//Put it in application.properties
+	RestTemplate restTemplate = new RestTemplate();
 	@Override
 	public List<Employee> getAllEmployees() {
-		RestTemplate restTemplate = new RestTemplate();
-		Employee[] employees = restTemplate.getForObject(SERVICE_URL + "getAll", Employee[].class);
+		
+		Employee[] employees = this.restTemplate.getForObject(SERVICE_URL + "getAll", Employee[].class);
 		return Arrays.asList(employees);
 
 	}
 
 	@Override
 	public Employee getByEmployeeCode(int code) {
-		RestTemplate restTemplate = new RestTemplate();
-		return restTemplate.getForObject(SERVICE_URL + "getByEmployeeCode/" + code, Employee.class);
+
+		return this.restTemplate.getForObject(SERVICE_URL + "getByEmployeeCode/" + code, Employee.class);
 
 	}
 
 	@Override
 	public void addEmployee(Employee employee) {
-		RestTemplate restTemplate = new RestTemplate();
+
 		HttpEntity<Employee> request = new HttpEntity<>(employee);
 
-		restTemplate.postForObject(SERVICE_URL + "addEmployee", request, Employee.class);
+		this.restTemplate.postForObject(SERVICE_URL + "addEmployee", request, Employee.class);
 
 	}
 

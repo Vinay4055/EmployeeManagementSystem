@@ -17,6 +17,7 @@
 </head>
 <body>
 	<div class="container">
+	
 		<h2>Enter Employee Details</h2>
 		<form:form class="form-horizontal" method="POST"
 			action="/employeeManagement/addEmployee" modelAttribute="employee">
@@ -31,12 +32,13 @@
 				<label class="control-label col-sm-2">Location:</label>
 				<div class="col-sm-10">
 					<form:input type="text" class="form-control" path="location" />
+					<form:errors path="location"></form:errors>
 				</div>
 			</div>
 			<div class="form-group">
 				<label class="control-label col-sm-2">Email:</label>
 				<div class="col-sm-10">
-					<form:input type="text" class="form-control" path="emailId" />
+					<form:input type="email" class="form-control" path="emailId" />
 				</div>
 			</div>
 			<div class="form-group">

@@ -23,12 +23,12 @@
 	<div class="container">
 		<h2>Edit Employee Details</h2>
 		<form:form class="form-horizontal" method="POST"
-			action="/employeeManagement/editEmployee" modelAttribute="updatedEmployee">
+			action="/employeeManagement/editEmployee" modelAttribute="employee">
 			<div class="form-group">
 				<label class="control-label col-sm-2">Employee Code</label>
 				<div class="col-sm-10">
 					<form:input type="text" class="form-control" 
-						value="${employee.code }" readonly="readonly" path="code" />
+						value="${employee.code }" readonly="true" path="code" />
 				</div>
 			</div>
 			<div class="form-group">
@@ -48,7 +48,7 @@
 			<div class="form-group">
 				<label class="control-label col-sm-2">Email:</label>
 				<div class="col-sm-10">
-					<form:input type="text" class="form-control" 
+					<form:input type="email" class="form-control" 
 						value="${employee.emailId }" path="emailId"/>
 				</div>
 			</div>

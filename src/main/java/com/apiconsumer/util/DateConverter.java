@@ -21,6 +21,10 @@ public class DateConverter {
 		if (monthInString.length() == 1) {
 			monthInString = 0 + monthInString;
 		}
-		return cal.get(Calendar.YEAR) + "-" + monthInString + "-" + cal.get(Calendar.DATE);
+		String dateInString = String.valueOf(cal.get(Calendar.DATE));
+		if (dateInString.length() == 1) {
+			dateInString = 0 + dateInString;
+		}
+		return cal.get(Calendar.YEAR) + "-" + monthInString + "-" + dateInString;
 	}
 }
