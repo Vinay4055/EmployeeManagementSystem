@@ -42,7 +42,7 @@
 			<div class="form-group">
 				<label class="control-label col-sm-2">Date of Birth:</label>
 				<div class="col-sm-10">
-					<form:input type="text" class="form-control" path="dobInString" placeholder="yyyy-MM-dd"/>
+					<form:input type="date" class="form-control" path="dobInString" />
 				</div>
 			</div>
 			<div class="form-group">

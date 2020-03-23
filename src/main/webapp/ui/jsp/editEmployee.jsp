@@ -11,9 +11,16 @@
 	src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
 <script
 	src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
+	
+
+	
+	
+	
+	
 </head>
 <body>
 	<div class="container">
+		Date=${employee.dobInString }
 		<h2>Edit Employee Details</h2>
 		<form class="form-horizontal" method="POST"
 			action="/employeeManagement/editEmployee">
@@ -48,8 +55,8 @@
 			<div class="form-group">
 				<label class="control-label col-sm-2">Date of Birth:</label>
 				<div class="col-sm-10">
-					<input type="text" class="form-control" name="dobInString"
-						value="${employee.dobInString }" />(DOB Format Should be in 'yyyy-MM-dd' format)
+					<input type="date" id="dob" class="form-control" name="dobInString"
+						value=${employee.dobInString } />
 				</div>
 			</div>
 			<div class="form-group">

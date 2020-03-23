@@ -10,11 +10,17 @@ public class DateConverter {
 	private DateConverter() {
 		throw new IllegalStateException("Can Not Create Object Of Utility Class");
 	}
-public static String convertDate(String dateStr) throws ParseException {
-	DateFormat formatter = new SimpleDateFormat("E MMM dd HH:mm:ss Z yyyy");
-	Date date = (Date)formatter.parse(dateStr);     
-	Calendar cal = Calendar.getInstance();
-	cal.setTime(date);
-	return cal.get(Calendar.YEAR)+"-"+(cal.get(Calendar.MONTH) + 1)+"-"+cal.get(Calendar.DATE);
-}
+
+	public static String convertDate(String dateStr) throws ParseException {
+		DateFormat formatter = new SimpleDateFormat("E MMM dd HH:mm:ss Z yyyy");
+		Date date = (Date) formatter.parse(dateStr);
+		Calendar cal = Calendar.getInstance();
+		cal.setTime(date);
+		int month = cal.get(Calendar.MONTH) + 1;
+		String monthInString = String.valueOf(month);
+		if (monthInString.length() == 1) {
+			monthInString = 0 + monthInString;
+		}
+		return cal.get(Calendar.YEAR) + "-" + monthInString + "-" + cal.get(Calendar.DATE);
+	}
 }
